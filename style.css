@@ -1,107 +1,114 @@
-/* --- DEL 1: Pseudo-elementer --- */
+/* Generelt */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
 
-/* 1.1 ::before på overskrift */
+/* Pseudo-elementer ::before og ::after */
 h1::before {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: teal;
-  margin-bottom: 10px;
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: royalblue;
+    margin-bottom: 10px;
 }
 
-/* 1.2 ::after på hvert listeelement */
 ul li::after {
-  content: " ★";
-  color: gold;
-  font-size: 1.2em;
+    content: " ★";
+    color: gold;
+    font-size: 1.2em;
 }
 
-/* 1.3 Ulike farger og størrelser på ::before og ::after */
-ul li::after {
-  color: gold;
-  font-size: 1.2em;
-}
+/* Ulike farger og størrelser */
 h1::before {
-  background-color: #007acc;
-  height: 5px;
-  width: 80px;
+    background-color: royalblue;
+}
+ul li::after {
+    color: darkorange;
 }
 
-/* --- DEL 2: Pseudo-selektorer --- */
-
-/* 2.1 :nth-child(odd) for bakgrunn */
+/* Pseudo-selektorer */
 ul li:nth-child(odd) {
-  background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
-/* 2.2 :hover for knapp */
-button {
-  background-color: #007acc;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-button:hover {
-  background-color: #005f99;
+.my-button {
+    padding: 10px 20px;
+    background-color: steelblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* 2.3 :first-child og :last-child i listen */
+.my-button:hover {
+    background-color: darkblue;
+}
+
 ul li:first-child {
-  color: green;
+    color: green;
 }
+
 ul li:last-child {
-  color: red;
+    color: red;
 }
 
-/* 2.4 :not() – ekskluderer tredje element */
 ul li:not(:nth-child(3)) {
-  font-style: italic;
+    font-style: italic;
 }
 
-/* --- EKSTRA UTFORDRING --- */
-
-/* Fremhevet seksjon med ::before og ::after */
-.fremhevet {
-  position: relative;
-  padding: 20px;
-  margin-top: 30px;
-  border: 2px solid transparent;
-}
-.fremhevet::before,
-.fremhevet::after {
-  content: "";
-  position: absolute;
-  border: 2px solid #007acc;
-}
-.fremhevet::before {
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  border-top: none;
-  border-bottom: none;
-}
-.fremhevet::after {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-left: none;
-  border-right: none;
+/* Seksjonsoppsett */
+.main-section {
+    margin-top: 30px;
 }
 
-/* :focus på input */
-.fremhevet input:focus {
-  border: 2px solid orange;
-  outline: none;
-  box-shadow: 0 0 5px orange;
+.subsection {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
-/* :nth-of-type for spesifikk seksjon */
-section .seksjon:nth-of-type(2) {
-  background-color: #eef;
-  padding: 10px;
-  border-left: 4px solid #007acc;
+/* Ekstra utfordring */
+.highlighted {
+    margin-top: 40px;
+    padding: 20px;
+    position: relative;
+    font-weight: bold;
+    background-color: #fff8dc;
 }
+
+.highlighted::before,
+.highlighted::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid orange;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.highlighted::before {
+    transform: translate(-5px, -5px);
+}
+
+.highlighted::after {
+    transform: translate(5px, 5px);
+}
+
+/* Fokus-effekt */
+.input-focus:focus {
+    outline: none;
+    border: 2px solid royalblue;
+    box-shadow: 0 0 5px royalblue;
+}
+
+/* nth-of-type på underseksjoner */
+.subsection:nth-of-type(2) {
+    background-color: lightyellow;
+    font-weight: bold;
+}
+
